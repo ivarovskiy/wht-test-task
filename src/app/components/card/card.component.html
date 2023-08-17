@@ -1,0 +1,29 @@
+<mat-card class="card">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image">
+      <img [src]="cat.url" alt="avatar" class="avatar" />
+    </div>
+    <mat-card-title>{{ breeds[0].name }}</mat-card-title>
+    <mat-card-subtitle>{{ breeds[0].origin }}</mat-card-subtitle>
+  </mat-card-header>
+  <div class="imageWrapper">
+    <img mat-card-image [src]="cat.url" alt="Photo of a cat" class="image" />
+  </div>
+  <mat-card-content class="description">
+    <p>{{ breeds[0].description | truncate: 120 }}</p>
+  </mat-card-content>
+  <mat-card-actions class="buttonGroup">
+    <button mat-button aria-label="like" (click)="toggleFavorite(cat)">
+      {{ cat.favorite ? 'dislike' : 'like' }}
+      <mat-icon color="warn">{{
+        cat.favorite ? 'favorite' : 'favorite_border'
+      }}</mat-icon>
+    </button>
+    <button
+      mat-button
+      aria-label="link"
+      [routerLink]="['/cat-details', cat.id]">
+      link<mat-icon>link</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

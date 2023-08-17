@@ -1,0 +1,24 @@
+<form class="form" [formGroup]="filterForm">
+  <mat-form-field color="primary">
+    <mat-label>Кількість</mat-label>
+    <input matInput formControlName="limit" required />
+    <mat-error *ngIf="filterForm.get('limit')?.hasError('required')"
+      >Limit is required</mat-error
+    >
+    <mat-error *ngIf="filterForm.get('limit')?.hasError('min')"
+      >Limit should be at least 1</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field color="primary">
+    <mat-label>Select</mat-label>
+    <mat-select formControlName="breed" required>
+      <mat-option value="All">All</mat-option>
+      <mat-option *ngFor="let breed of breeds" [value]="breed.id">
+        {{ breed.name }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="filterForm.get('breed')?.hasError('required')"
+      >Breed is required</mat-error
+    >
+  </mat-form-field>
+</form>

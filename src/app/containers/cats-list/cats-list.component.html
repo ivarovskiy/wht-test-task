@@ -1,0 +1,9 @@
+<div class="cats" *ngIf="isLoading; else loader">
+  <div *ngFor="let cat of cats$ | async">
+    <app-card [cat]="cat"></app-card>
+  </div>
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

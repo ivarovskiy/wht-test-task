@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="left">
+    <button mat-button aria-label="link" (click)="goBack()">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+    Back
+  </div>
+  <div *ngIf="cat$ | async as cat" class="catDetailsContainer middle">
+    <div class="catBreed">{{ cat.breeds[0].name }}</div>
+    <div class="imageWrapper">
+      <img [src]="cat.url" alt="{{ cat.breeds[0].name }}" class="image" />
+    </div>
+    <div class="breedContent">
+      <div class="breedTemperament catLabel">
+        {{ cat.breeds[0].temperament }}
+      </div>
+      <div class="breedLabel">
+        <div class="breedFlag catLabel">
+          <img [src]="countryFlag" alt="countryFlag" class="countryFlagImage" />
+          {{ cat.breeds[0].origin }}
+        </div>
+        <div
+          class="breeedAlergic catLabel"
+          [ngClass]="{
+            'non-hypoallergenic': !cat.breeds[0].hypoallergenic
+          }">
+          {{
+            cat.breeds[0].hypoallergenic
+              ? 'Hypoallergenic'
+              : 'No hypoallergenic'
+          }}
+        </div>
+      </div>
+
+      <div class="breedCharacteristics">
+        <div class="breedWeight">
+          <span>Size:</span>
+          Imperial : {{ cat.breeds[0].weight.imperial }} <br />
+          Metric: {{ cat.breeds[0].weight.metric }}
+        </div>
+        <div class="breedLifespan">
+          <span>Lifespan:</span>
+          {{ cat.breeds[0].life_span }}
+        </div>
+      </div>
+
+      <div class="breedDescription">
+        {{ cat.breeds[0].description }}
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    Wiki
+    <button mat-button aria-label="link" (click)="redirectToWikipedia()">
+      <mat-icon>arrow_forward_ios</mat-icon>
+    </button>
+  </div>
+</div>

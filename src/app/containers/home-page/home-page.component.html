@@ -1,0 +1,5 @@
+<div class="container">
+  <app-filter
+    (loadingStateChanged)="onLoadingStateChanged($event)"></app-filter>
+  <app-cats-list [isLoading]="isLoading"></app-cats-list>
+</div>
